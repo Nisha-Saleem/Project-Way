@@ -106,46 +106,6 @@
   font-style: italic;
 }
 
-.clear-btn {
-  align-self: flex-end;
-  padding: 0.375rem 0.75rem;
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-  border: none;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
-}
-
-.clear-btn:hover {
-  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-  color: #1e293b;
-  transform: translateY(-1px);
-}
-
-.send-btn {
-  align-self: flex-end;
-  padding: 0.375rem 0.75rem;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  border: none;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.05);
-}
-
-.send-btn:hover {
-  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
 /* Upload Section */
 .u-set {
   background-color: #ffffff;
@@ -465,81 +425,11 @@
   font-weight: 400;
 }
 
-.f-actions {
-  display: flex;
-  gap: 0.125rem;
-}
-
-.f-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.125rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 1px solid rgba(226, 232, 240, 0.5);
-}
-
-.f-dl {
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  color: #1e40af;
-}
-
-.f-dl:hover {
-  background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
-  color: #1e3a8a;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
-}
-
-.f-del {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-  color: #991b1b;
-}
-
-.f-del:hover {
-  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-  color: #7f1d1d;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
-}
-
-.f-actionIcon {
-  font-size: 0.875rem;
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
   .u-box {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 1.5rem;
-  }
-  
-  .upload-left,
-  .upload-right {
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .upload-page {
-    padding: 1rem;
-  }
-  
-  .upload-container {
-    gap: 1rem;
-  }
-  
-  .upload-drop-zone {
-    padding: 2rem 1rem;
-  }
-  
-  .upload-btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.875rem;
   }
 }

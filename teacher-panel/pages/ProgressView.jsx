@@ -40,15 +40,6 @@ const ProgressView = () => {
     loadAllProgress();
   }, []);
 
-  const activeIdeas = projects
-    .filter(p => p.idea && p.idea.status === 'Accepted' && p.progress && p.progress.leaderName && (p.progress.progress > 0 || (p.progress.tasks && p.progress.tasks.length > 0)))
-    .map(p => ({
-      ...p.idea,
-      progress: p.progress?.progress || 0,
-      milestones: p.progress?.milestones || { current: 'Not started', next: 'In progress' },
-      members: p.progress?.members || p.idea?.team?.map(t => t.name) || []
-    }));
-
   const hasLiveProgress = studentProgressData && studentProgressData.length > 0;
 
   const displayStudentProgress = () => {

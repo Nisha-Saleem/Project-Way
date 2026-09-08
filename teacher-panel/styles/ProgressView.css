@@ -30,47 +30,6 @@
   color: #64748b;
 }
 
-/* Session Tabs */
-.p-tabs-wrapper {
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.p-tabs {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-}
-
-.p-tab-btn {
-  white-space: nowrap;
-  padding: 0.75rem 0.125rem;
-  border: none;
-  border-bottom: 2px solid transparent;
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  background: none;
-  color: #64748b;
-  cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
-}
-
-.p-tab-btn:hover {
-  color: #334155;
-  border-bottom-color: #cbd5f5;
-}
-
-.p-tab-btn-active {
-  border-bottom-color: #2563eb;
-  color: #2563eb;
-}
-
-.p-tab-icon {
-  font-size: 20px;
-}
-
 /* Progress List Container */
 .p-list {
   display: flex;
@@ -115,16 +74,6 @@
 .p-chipPrimary {
   background-color: #dbeafe;
   color: #1d4ed8;
-}
-
-.p-chipPurple {
-  background-color: #e9d5ff;
-  color: #7c3aed;
-}
-
-.p-chipEmerald {
-  background-color: #d1fae5;
-  color: #059669;
 }
 
 .p-cardTitle {

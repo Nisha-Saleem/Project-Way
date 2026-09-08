@@ -125,21 +125,6 @@ const Upload = () => {
     setAnnouncement(sanitized);
   };
 
-  const handleClearAnnouncement = () => {
-    setAnnouncement('');
-  };
-
-  const handleSendAnnouncement = () => {
-    if (announcement.trim()) {
-      // Simulate sending announcement to students
-      alert(`Announcement sent to students: "${announcement}"`);
-      // Clear announcement after sending
-      setAnnouncement('');
-    } else {
-      alert('Please enter an announcement before sending');
-    }
-  };
-
   const handleDeleteFile = async (fileId) => {
     try {
       const result = await uploads.deleteUpload(fileId);
