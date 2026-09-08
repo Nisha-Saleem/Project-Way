@@ -8,6 +8,12 @@ const Upload = () => {
   const [announcement, setAnnouncement] = useState('');
   const fileInputRef = useRef(null);
 
+  // Helper function to capitalize first word
+  const capitalizeFirstWord = (text) => {
+    if (!text) return text;
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
+
   useEffect(() => {
     // Load upload history from backend
     const loadUploadHistory = async () => {
@@ -122,7 +128,8 @@ const Upload = () => {
     const value = e.target.value;
     // Allow only letters and numbers
     const sanitized = value.replace(/[^a-zA-Z0-9\s]/g, '');
-    setAnnouncement(sanitized);
+    // Capitalize first word
+    setAnnouncement(capitalizeFirstWord(sanitized));
   };
 
   const handleDeleteFile = async (fileId) => {

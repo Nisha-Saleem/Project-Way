@@ -9,6 +9,12 @@ const DashboardView = ({ showIssues, setShowIssues, notificationSelectId, onNoti
   const [feedback, setFeedback] = useState('');
   const [selectedIssue, setSelectedIssue] = useState(null);
   const [issueReply, setIssueReply] = useState('');
+
+  // Helper function to capitalize first word
+  const capitalizeFirstWord = (text) => {
+    if (!text) return text;
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
   const [loading, setLoading] = useState(true);
 
   // Load student issues from backend
@@ -240,7 +246,7 @@ const DashboardView = ({ showIssues, setShowIssues, notificationSelectId, onNoti
                     <div className="d-inputWrap">
                       <textarea
                         value={feedback}
-                        onChange={(e) => setFeedback(e.target.value)}
+                        onChange={(e) => setFeedback(capitalizeFirstWord(e.target.value))}
                         className="d-input"
                         placeholder="Enter feedback for the students..."
                       ></textarea>
@@ -355,7 +361,7 @@ const DashboardView = ({ showIssues, setShowIssues, notificationSelectId, onNoti
                 <h4>Reply to: {selectedIssue.category} Issue</h4>
                 <textarea
                   value={issueReply}
-                  onChange={(e) => setIssueReply(e.target.value)}
+                  onChange={(e) => setIssueReply(capitalizeFirstWord(e.target.value))}
                   className="issues-reply-input"
                   placeholder="Type your reply to the student..."
                 ></textarea>
