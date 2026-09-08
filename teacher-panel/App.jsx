@@ -6,7 +6,7 @@ import ProgressView from './pages/ProgressView';
 import Upload from './pages/Upload';
 import NavButton from './components/NavButton';
 import TeacherProfile from './components/TeacherProfile';
-import { notifications, getAllIssues, markIssueAsRead } from './api/teacherPanelApi';
+import { notifications, getAllIssues, markIssueAsRead, getRoles } from './api/teacherPanelApi';
 import './styles/main.css';
 import './styles/utilities.css';
 import './styles/scrollbar.css';
@@ -22,30 +22,31 @@ const Navigation = ({ userName, onLogout }) => {
   const [teacherPermissions, setTeacherPermissions] = useState([]);
 
   useEffect(() => {
-    const loadPermissions = () => {
-      const saved = localStorage.getItem('roles');
-      if (saved) {
-        const roles = JSON.parse(saved);
-        const teacher = roles.find(r => r.id === '2');
-        if (teacher) {
-          setTeacherPermissions(teacher.permissions);
+    const loadPermissions = async () => {
+      try {
+        const response = await getRoles();
+        if (response.roles && response.roles.length > 0) {
+          const roles = response.roles.map((role) => ({
+            ...role,
+            id: role.roleId || role._id || role.id,
+          }));
+          const teacher = roles.find(r => r.id === '2');
+          if (teacher) {
+            setTeacherPermissions(teacher.permissions);
+          }
         }
+      } catch (error) {
+        console.error('Failed to load permissions from backend:', error);
       }
     };
 
     loadPermissions();
 
-    // Listen for storage changes to update permissions when admin saves
-    const handleStorageChange = (e) => {
-      if (e.key === 'roles') {
-        loadPermissions();
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
+    // Poll for permission updates every 30 seconds
+    const interval = setInterval(loadPermissions, 30000);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
     };
   }, []);
 
@@ -85,10 +86,10 @@ const Navigation = ({ userName, onLogout }) => {
     return () => clearInterval(interval);
   }, [userName]);
 
-  const canUpload = !teacherPermissions.includes('idea.upload');
-  const canViewProgress = !teacherPermissions.includes('progress.track');
-  const canReviewIdeas = !teacherPermissions.includes('idea.review');
-  const canCreateTasks = !teacherPermissions.includes('task.create');
+  const canUpload = teacherPermissions.includes('idea.upload');
+  const canViewProgress = teacherPermissions.includes('progress.track');
+  const canReviewIdeas = teacherPermissions.includes('idea.review');
+  const canCreateTasks = teacherPermissions.includes('task.create');
 
   const isActive = (path) => {
     const currentPath = location.pathname;

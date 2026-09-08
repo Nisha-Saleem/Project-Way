@@ -193,3 +193,14 @@ export const uploads = {
     }
   }
 };
+
+// Roles API (fetch from public endpoint)
+export const getRoles = async () => {
+  try {
+    const response = await api.get('/api/admin/roles/public');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching roles:', error);
+    return { success: false, message: 'Error fetching roles', error: error.message };
+  }
+};
