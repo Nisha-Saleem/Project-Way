@@ -198,30 +198,3 @@ export const sendFeedback = async (req, res) => {
     });
   }
 };
-
-// Get idea statistics
-export const getIdeaStatistics = async (req, res) => {
-  console.log('📝 [Teacher Dashboard] Get idea statistics request received');
-  
-  try {
-    const ideas = await StudentIdea.find();
-    const accepted = ideas.filter(idea => idea.status === 'Accepted').length;
-    const rejected = ideas.filter(idea => idea.status === 'Rejected').length;
-    const pending = ideas.filter(idea => idea.status === 'Pending').length;
-    const morning = ideas.filter(idea => idea.session.includes('Morning') && (idea.status === 'Accepted' || idea.status === 'Rejected')).length;
-    const evening = ideas.filter(idea => idea.session.includes('Evening') && (idea.status === 'Accepted' || idea.status === 'Rejected')).length;
-
-    console.log('📊 [Teacher Dashboard] Statistics:', { accepted, rejected, pending, morning, evening });
-    res.status(200).json({ 
-      success: true, 
-      stats: { accepted, rejected, pending, morning, evening } 
-    });
-  } catch (error) {
-    console.error('❌ [Teacher Dashboard] Error fetching statistics:', error);
-    res.status(500).json({ 
-      success: false, 
-      message: 'Error fetching statistics', 
-      error: error.message 
-    });
-  }
-};

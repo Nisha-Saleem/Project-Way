@@ -64,16 +64,6 @@ export const sendFeedback = async (ideaId, ideaTitle, leaderName, feedback, teac
   }
 };
 
-export const getIdeaStatistics = async () => {
-  try {
-    const response = await api.get('/api/teacher/dashboard/statistics');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching idea statistics:', error);
-    return { success: false, message: 'Error fetching idea statistics', error: error.message };
-  }
-};
-
 // Teacher Progress API
 export const getAllStudentProgress = async () => {
   try {

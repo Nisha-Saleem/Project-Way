@@ -3,8 +3,7 @@ import {
   getPendingIdeas,
   getAllIdeasFiltered,
   reviewIdea,
-  sendFeedback,
-  getIdeaStatistics
+  sendFeedback
 } from '../controllers/teacherDashboardController.js';
 
 const router = express.Router();
@@ -20,8 +19,5 @@ router.put('/review/:id', reviewIdea);
 
 // Send feedback to student
 router.post('/feedback', sendFeedback);
-
-// Get idea statistics
-router.get('/statistics', getIdeaStatistics);
 
 export default router;
