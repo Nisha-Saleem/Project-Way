@@ -11,7 +11,7 @@ const INITIAL_ROLES = [
       'idea.upload',
       'progress.track',
       'idea.review',
-      'task.create'
+      'idea.viewdashboard'
     ],
     icon: 'person_apron',
     colorClass: 'role-avatar-primary',
@@ -35,7 +35,7 @@ const PERMISSION_GROUPS = {
         'idea.upload',
         'progress.track',
         'idea.review',
-        'task.create'
+        'idea.viewdashboard'
       ],
     },
   ],

@@ -23,7 +23,7 @@ export async function seedRoles() {
       roleId: '2',
       name: 'Teacher',
       description: 'Standard access for teaching staff',
-      permissions: ['idea.upload', 'progress.track', 'idea.review', 'task.create'],
+      permissions: ['idea.upload', 'progress.track', 'idea.review', 'idea.viewdashboard'],
       icon: 'person_apron',
       colorClass: 'role-avatar-primary',
       isSystem: true,

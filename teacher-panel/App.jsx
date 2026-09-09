@@ -89,7 +89,7 @@ const Navigation = ({ userName, onLogout }) => {
   const canUpload = teacherPermissions.includes('idea.upload');
   const canViewProgress = teacherPermissions.includes('progress.track');
   const canReviewIdeas = teacherPermissions.includes('idea.review');
-  const canCreateTasks = teacherPermissions.includes('task.create');
+  const canCreateTasks = teacherPermissions.includes('idea.viewdashboard');
 
   const isActive = (path) => {
     const currentPath = location.pathname;
