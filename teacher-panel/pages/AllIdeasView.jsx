@@ -145,27 +145,31 @@ const AllIdeasView = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredIdeas.map(idea => (
-                <tr key={idea.id} className="i-row">
-                  <td className="i-cell i-titleCell">{idea.title}</td>
-                  <td className="i-cell i-descrCell">{idea.shortDescription}</td>
-                  <td className="i-cell">{idea.leader.name}</td>
-                  <td className="i-cell i-sessionCell">{idea.session}</td>
-                  <td className="i-cell i-rightCell">
-                    <span
-                      className={`i-pill ${
-                        idea.status === 'Accepted'
-                          ? 'i-pillAccept'
-                          : idea.status === 'Rejected'
-                            ? 'i-pillReject'
-                            : 'i-pillPending'
-                      }`}
-                    >
-                      {idea.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              {filteredIdeas.map((idea, index) => {
+                const ideaKey = idea._id || idea.id || `${idea.title}-${idea.session}-${index}`;
+
+                return (
+                  <tr key={ideaKey} className="i-row">
+                    <td className="i-cell i-titleCell">{idea.title}</td>
+                    <td className="i-cell i-descrCell">{idea.shortDescription}</td>
+                    <td className="i-cell">{idea.leader.name}</td>
+                    <td className="i-cell i-sessionCell">{idea.session}</td>
+                    <td className="i-cell i-rightCell">
+                      <span
+                        className={`i-pill ${
+                          idea.status === 'Accepted'
+                            ? 'i-pillAccept'
+                            : idea.status === 'Rejected'
+                              ? 'i-pillReject'
+                              : 'i-pillPending'
+                        }`}
+                      >
+                        {idea.status}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
               {filteredIdeas.length === 0 && (
                 <tr>
                   <td colSpan={5} className="i-empty">No items found in this view.</td>

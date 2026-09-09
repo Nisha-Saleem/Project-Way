@@ -233,22 +233,26 @@ const Navigation = ({ userName, onLogout }) => {
                           {ideaNotifications.length === 0 ? (
                             <p className="notification-empty">No idea submissions yet.</p>
                           ) : (
-                            ideaNotifications.map((notification) => (
-                              <button
-                                key={notification.id}
-                                type="button"
-                                className={`notification-item ${notification.read ? 'notification-item-read' : ''}`}
-                                onClick={() => handleNotificationClick(notification)}
-                              >
-                                <p className="notification-item-title">{notification.title}</p>
-                                <p className="notification-item-leader">
-                                  Leader: {notification.leaderName}
-                                </p>
-                                {!notification.read && (
-                                  <span className="notification-item-new">New</span>
-                                )}
-                              </button>
-                            ))
+                            ideaNotifications.map((notification, index) => {
+                              const notificationKey = notification._id || notification.id || `notification-${index}`;
+
+                              return (
+                                <button
+                                  key={notificationKey}
+                                  type="button"
+                                  className={`notification-item ${notification.read ? 'notification-item-read' : ''}`}
+                                  onClick={() => handleNotificationClick(notification)}
+                                >
+                                  <p className="notification-item-title">{notification.title}</p>
+                                  <p className="notification-item-leader">
+                                    Leader: {notification.leaderName}
+                                  </p>
+                                  {!notification.read && (
+                                    <span className="notification-item-new">New</span>
+                                  )}
+                                </button>
+                              );
+                            })
                           )}
                         </div>
                       </div>
